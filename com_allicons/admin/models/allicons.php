@@ -5,7 +5,8 @@ defined('_JEXEC') or die('Restricted access');
 jimport('joomla.application.component.modellist');
 /**
  * AllIconsList Model
- */
+ *
+ */ 
 class AllIconsModelAllIcons extends JModelList
 {
 	/**
