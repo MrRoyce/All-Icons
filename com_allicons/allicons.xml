@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="2.5.0" method="upgrade">
+ 
+	<name>All Icons</name>
+	<creationDate>April 2012</creationDate>
+	<author>Royce Harding</author>
+	<authorEmail>royce@tdandt.com</authorEmail>
+	<authorUrl>http://www.tdandt.com</authorUrl>
+	<copyright>Copyright 2012 - Total Design and Technology</copyright>
+	<license>This component in released under the GNU/GPL v3 or later license</license>
+	<version>1.0.2</version>
+	<description>Manage the administrator quick icons</description>
+        
+    <scriptfile>installer.php</scriptfile>
+	
+	<!-- SQL query files to execute on installation -->
+	<install>
+		<sql>
+			<file charset="utf8" driver="mysql">sql/install.mysql.utf8.sql</file>
+			<file driver="mysql">sql/install.mysql.utf8.sql</file>
+			<file charset="utf8" driver="mysqli">sql/install.mysql.utf8.sql</file>
+			<file driver="mysqli">sql/install.mysql.utf8.sql</file>
+		</sql>
+	</install>
+
+	<!-- SQL query files to execute on uninstallation -->
+	<uninstall>
+		<sql>
+			<file charset="utf8" driver="mysql">sql/uninstall.mysql.utf8.sql</file>
+			<file driver="mysql">sql/uninstall.mysql.utf8.sql</file>
+			<file charset="utf8" driver="mysqli">sql/uninstall.mysql.utf8.sql</file>
+			<file driver="mysqli">sql/uninstall.mysql.utf8.sql</file>
+		</sql>
+	</uninstall>	
+ 
+	<update>
+		<schemas>
+			<schemapath type="mysql">sql/updates/mysql</schemapath>
+		</schemas>
+	</update>
+
+	<!-- Media files -->
+	<media destination="com_allicons" folder="media">
+		<folder>images</folder>
+                <filename>index.html</filename>
+	</media>	
+ 
+	<administration>
+	
+		<!-- Administration menu -->
+		<menu view="cpanel"
+			img="../media/com_allicons/images/allicons-16.png">COM_ALLICONS</menu>
+		<submenu>
+			<menu link="option=com_categories&amp;extension=com_allicons"
+				img="class:category">JCATEGORIES</menu>
+			<menu link="option=com_allicons" view="allicons"
+				img="components/com_allicons/assets/icons/icons-16.png">COM_ALLICONS_ICONS</menu>
+		</submenu>			
+			
+		<files folder="admin">
+			<!-- Admin Main File Copy Section -->
+
+			<filename>access.xml</filename>
+
+			<filename>allicons.php</filename>
+			<filename>config.xml</filename>
+			<filename>controller.php</filename>
+			<filename>index.html</filename>
+			<filename>installer.php</filename>
+			<!-- Assets files section -->
+			<folder>assets</folder>
+			<!-- SQL files section -->
+			<folder>sql</folder>
+			<!-- tables files section -->
+			<folder>tables</folder>
+			<!-- models files section -->
+			<folder>models</folder>
+			<!-- views files section -->
+			<folder>views</folder>
+			<!-- controllers files section -->
+			<folder>controllers</folder>
+			<!-- helpers files section -->
+			<folder>helpers</folder>
+		</files>
+		<languages folder="admin">
+			<language tag="en-GB">language/en-GB.com_allicons.ini</language>
+			<language tag="en-GB">language/en-GB.com_allicons.sys.ini</language>
+		</languages>		
+	</administration>
+ 
+</extension>

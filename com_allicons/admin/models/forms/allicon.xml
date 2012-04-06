@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset>
+		<field
+			name="id" type="hidden"
+		/>
+		<field name="catid" type="category" extension="com_allicons"
+			label="JCATEGORY" description="COM_ALLICONS_FIELD_CATEGORY_DESC"
+			class="inputbox" required="true" default=""
+		>
+			<option value="0">JOPTION_SELECT_CATEGORY</option>
+		</field>		
+		<field
+			name="label" type="text"
+			label="COM_ALLICONS_FIELD_LABEL" description="COM_ALLICONS_FIELD_LABEL_DESC"
+			required="true" size="20" class="inputbox" default=""
+		/>
+		<field
+			name="link" type="text"
+			label="COM_ALLICONS_FIELD_LINK" description="COM_ALLICONS_FIELD_LINK_DESC"
+			required="true" size="80" class="inputbox" default=""
+		/>
+		<field
+			name="icon" type="text"
+			label="COM_ALLICONS_FIELD_ICON" description="COM_ALLICONS_FIELD_ICON_DESC"
+			size="20" class="inputbox" default=""
+		/>
+		<field
+			name="description" 	type="text"
+			label="COM_ALLICONS_FIELD_DESC" description="COM_ALLICONS_FIELD_DESC_DESC"
+			size="100" class="inputbox" default=""
+		/>
+		<field name="published" type="list"
+			label="JSTATUS" description="COM_ALLICONS_FIELD_STATUS_DESC"
+			class="inputbox" size="1" default="1"
+		>
+			<option value="1">JPUBLISHED</option>
+			<option value="0">JUNPUBLISHED</option>
+			<option value="2">JARCHIVED</option>
+			<option value="-2">JTRASHED</option>
+		</field>
+		<field name="access" type="accesslevel" label="JFIELD_ACCESS_LABEL"
+			description="JFIELD_ACCESS_DESC" class="inputbox" size="1" 
+		/>
+		<field name="language" type="contentlanguage" label="JFIELD_LANGUAGE_LABEL"
+			description="COM_ALLICONS_FIELD_LANGUAGE_DESC" class="inputbox"
+		>
+			<option value="*">JALL</option>
+		</field>		
+	</fieldset>
+</form>
