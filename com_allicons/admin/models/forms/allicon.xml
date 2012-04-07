@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <form>
-	<fieldset>
+	<fieldset name="details">
 		<field
 			name="id" type="hidden"
 		/>
@@ -48,4 +48,21 @@
 			<option value="*">JALL</option>
 		</field>		
 	</fieldset>
+	
+
+	<fieldset name="basic" label="COM_ALLICONS_FIELDSET_OPTIONS">
+
+		<field name="target"
+			type="list"
+			label="COM_ALLICONS_ICON_TARGET_LABEL"
+			description="COM_ALLICONS_ICON_TARGET_DESC"
+			default="_self"
+		>
+			<option value="_blank">COM_ALLICONS_ICON_TARGET_BLANK</option>
+			<option value="_self">COM_ALLICONS_ICON_TARGET_SELF</option>
+			<option value="_parent">COM_ALLICONS_ICON_TARGET_PARENT</option>
+			<option value="_top">COM_ALLICONS_ICON_TARGET_TOP</option>
+		</field>
+	</fieldset>
+	
 </form>

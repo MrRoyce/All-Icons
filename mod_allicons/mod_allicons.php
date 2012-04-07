@@ -9,8 +9,12 @@
 // No direct access.
 defined('_JEXEC') or die;
 
-require_once dirname(__FILE__).'/helper.php';
+// Jloader::register is faster than require/require_once as per Joomla! programming, Mark Dexter, Louis Landry
+Jloader::register('modAllIconsHelper', dirname(__FILE__).'/helper.php');
+
+$moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx', ''));
 
 $buttons = modAllIconsHelper::getButtons($params);
 
+// Note, test for buttons retrieved  is in template, could be done here instead
 require JModuleHelper::getLayoutPath('mod_allicons', $params->get('layout', 'default'));

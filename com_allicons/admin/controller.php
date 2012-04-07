@@ -15,7 +15,7 @@ class AllIconsController extends JController
 	 *
 	 * @return void
 	 */
-	function display($cachable = false) 
+	function display($cachable = false, $urlparams = array())
 	{
 		// set default view if not set
 		JRequest::setVar('view', JRequest::getCmd('view', 'AllIcons'));

@@ -71,7 +71,7 @@ class AllIconsTableAllIcons extends JTable
 	 * @return	int
 	 * @since	2.5
 	 */
-	protected function _getAssetParentId()
+	protected function _getAssetParentId($table=null, $id=null)
 	{
 		$asset = JTable::getInstance('Asset');
 		$asset->loadByName('com_allicons');

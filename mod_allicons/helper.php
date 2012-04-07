@@ -50,8 +50,12 @@ abstract class modAllIconsHelper
 							'link' => JRoute::_($button->link),
 							'image' => trim('header/' . $button->icon),
 							'text' => JText::_($button->label),
-							'alt' => JText::_($button->label),
-							'access' => array('core.manage', 'com_content', 'core.create', 'com_content' )
+							'target' => JText::_($button->target)
+							// no access parameters defined for the button - 
+							// access is restricted through the peceding SQL query 
+							// and the module rightsmodule rights	
+							// see logic in
+							// libraries\cms\html\icons.php							
 						);							
 					}
 
@@ -73,8 +77,8 @@ abstract class modAllIconsHelper
 	private static function getButtonObjects($catid)
 	{
 		$db = JFactory::getDBO();
-		$query = $db->getQuery(TRUE);	
-		$query->select('a.id, a.label, a.link, a.icon, a.description, a.published, a.catid,  a.access, a.ordering');
+		$query = $db->getQuery(TRUE);	// TRUE create a new query
+		$query->select('a.id, a.label, a.link, a.target, a.icon, a.description, a.published, a.catid,  a.access, a.ordering');
 		
 		$user = JFactory::getuser();
 		
@@ -100,7 +104,7 @@ abstract class modAllIconsHelper
 		if (!$user->authorise('core.admin'))
 		{
 		    $groups	= implode(',', $user->getAuthorisedViewLevels());
-			$query->where('a.access IN ('.$groups.')');
+			$query->where('a.access IN (' . $groups . ')');
 		}
 
 		// Filter by published state.

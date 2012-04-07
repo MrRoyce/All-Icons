@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS `#__allicons` (
 	`label` varchar(25) NOT NULL DEFAULT '',
 	`link` varchar(255) NOT NULL DEFAULT '',
 	`icon` varchar(64) NOT NULL DEFAULT '',
+	`target` varchar(8) NOT NULL DEFAULT '',
 	`description` varchar(255) NOT NULL,
 	`published` tinyint(1) NOT NULL DEFAULT '0',
 	`catid` int(11) NOT NULL,
