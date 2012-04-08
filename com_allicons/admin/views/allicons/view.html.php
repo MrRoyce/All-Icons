@@ -16,23 +16,23 @@ class AllIconsViewAllIcons extends JView
 	protected $state;
 
 	/**
-	 * AllIconss view display method
+	 * AllIcons view display method
 	 * @return void
 	 */
 	function display($tpl = null) 
 	{
-				
- 
+
+		// Assign data to the view
+		$this->items = $this->get('Items');
+		$this->pagination = $this->get('Pagination');
+		$this->state = $this->get('State');
+		
 		// Check for errors.
 		if (count($errors = $this->get('Errors'))) 
 		{
 			JError::raiseError(500, implode('<br />', $errors));
 			return false;
-		}
-		// Assign data to the view
-		$this->items = $this->get('Items');
-		$this->pagination = $this->get('Pagination');
-		$this->state = $this->get('State');
+		}		
 		
 		// Set the toolbar
 		$this->addToolBar();

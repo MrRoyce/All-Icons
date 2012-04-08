@@ -3,6 +3,9 @@
 defined('_JEXEC') or die('Restricted Access');
 $listOrder	= $this->escape($this->state->get('list.ordering'));
 $listDirn	= $this->escape($this->state->get('list.direction'));
+$user		= JFactory::getUser();
+$canOrder	= $user->authorise('core.edit.state', 'com_weblinks.category');
+$saveOrder	= $listOrder == 'a.ordering';
 ?>
 <tr>
 	<th width="5">
@@ -12,30 +15,30 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 		<input type="checkbox" name="checkall-toggle" value="" title="<?php echo JText::_('JGLOBAL_CHECK_ALL'); ?>" onclick="Joomla.checkAll(this)" />
 	</th>			
 	<th>
-		<?php echo JText::_('COM_ALLICONS_HEADING_LABEL'); ?>
+		<?php echo JHtml::_('grid.sort', 'COM_ALLICONS_HEADING_LABEL', 'a.label', $listDirn, $listOrder); ?>
 	</th>
 	<th>
-		<?php echo JText::_('COM_ALLICONS_HEADING_CATEGORY'); ?>
+		<?php echo JHtml::_('grid.sort', 'COM_ALLICONS_HEADING_CATEGORY', 'category_title', $listDirn, $listOrder); ?>
 	</th>
 	<th>
-		<?php echo JText::_('COM_ALLICONS_HEADING_LINK'); ?>
+		<?php echo JHtml::_('grid.sort', 'COM_ALLICONS_HEADING_LINK', 'a.link', $listDirn, $listOrder); ?>
 	</th>
 	<th width="10%">
 		<?php echo JHtml::_('grid.sort',  'JGRID_HEADING_ORDERING', 'a.ordering', $listDirn, $listOrder); ?>
-
+		<?php if ($canOrder && $saveOrder) :?>
 			<?php echo JHtml::_('grid.order',  $this->items, 'filesave.png', 'allicons.saveorder'); ?>
-
+		<?php endif; ?>
 	</th>	
 	<th>
 		<?php echo JText::_('COM_ALLICONS_HEADING_STATUS'); ?>
 	</th>
 	<th width="10%">
-		<?php echo JHtml::_('grid.sort', 'JGRID_HEADING_ACCESS', 'access_level', $listDirn, $listOrder); ?>
+		<?php echo JHtml::_('grid.sort', 'JGRID_HEADING_ACCESS', 'a.access', $listDirn, $listOrder); ?>
 	</th>
 	<th>
-		<?php echo JText::_('COM_ALLICONS_HEADING_ICON'); ?>
+		<?php echo JHtml::_('grid.sort', 'COM_ALLICONS_HEADING_ICON', 'a.description', $listDirn, $listOrder); ?>
 	</th>
 	<th>
-		<?php echo JText::_('COM_ALLICONS_HEADING_DESC'); ?>
+		<?php echo JHtml::_('grid.sort', 'COM_ALLICONS_HEADING_DESC', 'a.icon', $listDirn, $listOrder); ?>
 	</th>
 </tr>

@@ -11,5 +11,12 @@ defined('_JEXEC') or die;
 $html = JHtml::_('icons.buttons', $buttons);
 ?>
 <?php if (!empty($html)): ?>
-	<div class="cpanel<?php echo $moduleclass_sfx; ?>"><?php echo $html;?></div>
+	<!-- 
+	* Must use an id for cpanel, not a class! The Bluestork template defines the icon css for both a class and div.  
+	* the core Quick Icons module uses the class definition.  This causes a conflict with Akeeba admin tools
+	* becuse it tries to put its icons in the cpanel icons class.  The KC QUcik Icons also uses the id of cpanel
+	* so this module should not be shown on the same page as that module because there will be two 
+	* divs with the same id.
+	-->
+	<div id="cpanel<?php echo $moduleclass_sfx; ?>"><?php echo $html;?></div>
 <?php endif;?>

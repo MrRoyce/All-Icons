@@ -9,7 +9,7 @@ if (!JFactory::getUser()->authorise('core.manage', 'com_allicons'))
 }
 
 // require helper file
-JLoader::register('AllIconsHelper', dirname(__FILE__) . DS . 'helpers' . DS . 'allicons.php');
+JLoader::register('AllIconsHelper', dirname(__FILE__) . '/helpers/allicons.php');
 
 // Set some global property
 $document = JFactory::getDocument();

@@ -13,7 +13,7 @@ abstract class AllIconsHelper
 	public static function addSubmenu($submenu) 
 	{
 		JSubMenuHelper::addEntry(JText::_('COM_ALLICONS_SUBMENU_ICONS'),
-		                         'index.php?option=com_allicons', $submenu == 'links');
+		                         'index.php?option=com_allicons&view=allicons', $submenu == 'allicons');
 		JSubMenuHelper::addEntry(JText::_('COM_ALLICONS_SUBMENU_CATEGORIES'),		'index.php?option=com_categories&view=categories&extension=com_allicons',                 $submenu == 'categories');
 		// set some global property
 		$document = JFactory::getDocument();
@@ -25,26 +25,28 @@ abstract class AllIconsHelper
 		}
 	}
 	
-/**
+	/**
 	 * Get the actions
 	 */
-	public static function getActions($iconId = 0)
+	public static function getActions($categoryId = 0)
 	{	
 		jimport('joomla.access.access');
 		$user	= JFactory::getUser();
 		$result	= new JObject;
  
-		if (empty($iconId)) {
+		if (empty($categoryId)) {
 			$assetName = 'com_allicons';
 		}
 		else {
-			$assetName = 'com_allicons.icon.'.(int) $iconId;
+			$assetName = 'com_allicons.category.'.(int) $categoryId;
 		}
  
-		$actions = JAccess::getActions('com_allicons', 'component');
- 
+		$actions = array(
+			'core.admin', 'core.manage', 'core.create', 'core.edit', 'core.edit.own', 'core.edit.state', 'core.delete'
+		);
+
 		foreach ($actions as $action) {
-			$result->set($action->name, $user->authorise($action->name, $assetName));
+			$result->set($action, $user->authorise($action, $assetName));
 		}
  
 		return $result;

@@ -7,7 +7,7 @@ JHtml::_('behavior.formvalidation');
 <form action="<?php echo JRoute::_('index.php?option=com_allicons&layout=edit&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="allicons-form" class="form-validate">
 	<div class="width-60 fltlft">
 		<fieldset class="adminform">
-			<legend><?php echo JText::_('COM_ALLICONS_DETAILS'); ?></legend>
+			<legend><?php echo empty($this->item->id) ? JText::_('COM_ALLICONS_NEW_ICON') : JText::sprintf('COM_ALLICONS_EDITING', $this->item->id); ?></legend>
 			<ul class="adminformlist">
 	<?php foreach($this->form->getFieldset('details') as $field): ?>
 		<?php if (!$field->hidden): ?>

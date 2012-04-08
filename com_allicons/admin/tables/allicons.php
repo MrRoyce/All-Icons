@@ -19,27 +19,34 @@ class AllIconsTableAllIcons extends JTable
 	{
 		parent::__construct('#__allicons', 'id', $db);
 	}
-
-	/**
-	 * Overloaded bind function
-	 *
-	 * @param       array           named array
-	 * @return      null|string     null is operation was satisfactory, otherwise returns an error
-	 * @see JTable:bind
-	 * @since 1.5
-	 */
-	public function bind($array, $ignore = '') 
-	{
-		if (isset($array['params']) && is_array($array['params'])) {
-			// Convert the params field to a string.
-			$parameter = new JRegistry();
-			$parameter->loadArray($array['params']);
-			$array['params'] = (string)$parameter;
-		}
-		return parent::bind($array, $ignore);
-	}
  
-	
+	/**
+	 * Overload the store method for the AllIcons table.
+	 *
+	 * @param	boolean	Toggle whether null values should be updated.
+	 * @return	boolean	True on success, false on failure.
+	 * @since	1.6
+	 */
+	public function store($updateNulls = false)
+	{
+		$date	= JFactory::getDate();
+		$user	= JFactory::getUser();
+		if ($this->id) {
+			// Existing icon
+			$this->modified		= $date->toSql();
+			$this->modified_by	= $user->get('id');
+		} else {
+			if (!intval($this->created)) {
+				$this->created = $date->toSql();
+			}
+			if (empty($this->created_by)) {
+				$this->created_by = $user->get('id');
+			}
+		}
+
+		// Attempt to store the icon
+		return parent::store($updateNulls);
+	}	
 	/**
 	 * Method to compute the default name of the asset.
 	 * The default name is in the form `table_name.id`

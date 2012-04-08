@@ -87,7 +87,7 @@ class AllIconsModelAllIcons extends JModelList
 		$query = $db->getQuery(true);
 		$user = JFactory::getUser();
 
-		$query->select('a.id, a.label, a.link, a.icon, a.description, a.published, a.catid, a.checked_out, a.checked_out_time,  a.access, a.ordering, a.language, a.publish_up, a.publish_down');
+		$query->select('a.id, a.label, a.link, a.icon, a.description, a.published, a.catid, a.checked_out, a.checked_out_time, a.access, a.ordering, a.language, a.publish_up, a.publish_down');
 
 		$query->from($db->quoteName('#__allicons').' AS a');
 		

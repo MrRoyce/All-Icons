@@ -10,6 +10,11 @@ jimport('joomla.application.component.view');
  */
 class AllIconsViewAllIcon extends JView
 {
+	protected $state;
+	protected $script;
+	protected $item;
+	protected $form;
+	
 	/**
 	 * display method of Allicons view
 	 * @return void
@@ -17,21 +22,18 @@ class AllIconsViewAllIcon extends JView
 	public function display($tpl = null) 
 	{
 		// get the Data
-		$form = $this->get('Form');
-		$item = $this->get('Item');
-		$script = $this->get('Script');  // gert validation script
- 
+		$this->form = $this->get('Form');
+		$this->item = $this->get('Item');
+		$this->script = $this->get('Script');  // get validation script
+		$this->state = $this->get('State');
+		
 		// Check for errors.
 		if (count($errors = $this->get('Errors'))) 
 		{
 			JError::raiseError(500, implode('<br />', $errors));
 			return false;
-		}
-		// Assign the Data
-		$this->form = $form;
-		$this->item = $item;
-		$this->script = $script;
- 
+		}		
+		
 		// Set the toolbar
 		$this->addToolBar();
  
@@ -51,40 +53,34 @@ class AllIconsViewAllIcon extends JView
 		$user = JFactory::getUser();
 		$userId = $user->id;
 		$isNew = ($this->item->id == 0);
-		$canDo = AllIconsHelper::getActions($this->item->id);
+		$checkedOut	= !($this->item->checked_out == 0 || $this->item->checked_out == $user->get('id'));
+		$canDo = AllIconsHelper::getActions($this->item->id, 0);
 		
 		JToolBarHelper::title($isNew ? JText::_('COM_ALLICONS_MANAGER_ALLICONS_NEW')
 		                             : JText::_('COM_ALLICONS_MANAGER_ALLICONS_EDIT'), 'allicons');
 									 
-		// Built the actions for new and existing records.
-		if ($isNew) {
-			// For new records, check the create permission.
-			if ($canDo->get('core.create')) {
-				JToolBarHelper::apply('allicon.apply', 'JTOOLBAR_APPLY');
-				JToolBarHelper::save('allicon.save', 'JTOOLBAR_SAVE');
-				JToolBarHelper::custom('allicon.save2new', 'save-new.png', 'save-new_f2.png',
-				                       'JTOOLBAR_SAVE_AND_NEW', false);
-			}
-			JToolBarHelper::cancel('allicon.cancel', 'JTOOLBAR_CANCEL');
-		} else {
-			if ($canDo->get('core.edit')) {
-				// We can save the new record
-				JToolBarHelper::apply('allicon.apply', 'JTOOLBAR_APPLY');
-				JToolBarHelper::save('allicon.save', 'JTOOLBAR_SAVE');
- 
-				// We can save this record, but check the create permission to see
-				// if we can return to make a new one.
-				if ($canDo->get('core.create')) {
-					JToolBarHelper::custom('allicon.save2new', 'save-new.png', 'save-new_f2.png',
-					                       'JTOOLBAR_SAVE_AND_NEW', false);
-				}
-			}
-			if ($canDo->get('core.create')) {
-				JToolBarHelper::custom('allicon.save2copy', 'save-copy.png', 'save-copy_f2.png',
-				                       'JTOOLBAR_SAVE_AS_COPY', false);
-			}
+		// If not checked out, can save the item.
+		if (!$checkedOut && ($canDo->get('core.edit')||(count($user->getAuthorisedCategories('com_allicons', 'core.create')))))
+		{
+			JToolBarHelper::apply('allicon.apply');
+			JToolBarHelper::save('allicon.save');
+		}
+		if (!$checkedOut && (count($user->getAuthorisedCategories('com_allicons', 'core.create')))){
+			JToolBarHelper::save2new('allicon.save2new');
+		}
+		
+		// If an existing item, can save to a copy.
+		if (!$isNew && (count($user->getAuthorisedCategories('com_allicons', 'core.create')) > 0)) {
+			JToolBarHelper::save2copy('allicon.save2copy');
+		}
+		
+		if (empty($this->item->id)) {
+			JToolBarHelper::cancel('allicon.cancel');
+		}
+		else {
 			JToolBarHelper::cancel('allicon.cancel', 'JTOOLBAR_CLOSE');
 		}
+
 	}
 	
 	/**
