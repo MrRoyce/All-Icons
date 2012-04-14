@@ -1,15 +1,17 @@
 <?php
-/**
- * @package		AllIcons.Administrator
- * @subpackage	mod_allicons
- * @copyright	Copyright (C) 2012 TDAndT, Inc. All rights reserved.
- * @license		GNU General Public License version 2 or later; see LICENSE.txt
- */
+/*------------------------------------------------------------------------
+# mod_allicons - All Icons Module
+# ------------------------------------------------------------------------
+# author Royce Harding - Total Design and Technology
+# copyright Copyright (C) 2012 tdandt.com. All Rights Reserved.
+# @license - http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+# Websites: http://www.tdandt.com
+# Technical Support: - https://github.com/MrRoyce/All-Icons
+-------------------------------------------------------------------------*/
+// no direct access
+defined( '_JEXEC' ) or die( 'Restricted access' ); 
 
-// No direct access.
-defined('_JEXEC') or die;
-
-abstract class modAllIconsHelper
+class modAllIconsHelper
 {
 
 	protected static $buttons = array();

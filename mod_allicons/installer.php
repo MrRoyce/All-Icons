@@ -1,18 +1,25 @@
 <?php
-
-defined('_JEXEC') or die('Restricted Access');
+/*------------------------------------------------------------------------
+# mod_allicons - All Icons Module
+# ------------------------------------------------------------------------
+# author Royce Harding - Total Design and Technology
+# copyright Copyright (C) 2012 tdandt.com. All Rights Reserved.
+# @license - http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+# Websites: http://www.tdandt.com
+# Technical Support: - https://github.com/MrRoyce/All-Icons
+-------------------------------------------------------------------------*/
+// no direct access
+defined( '_JEXEC' ) or die( 'Restricted access' ); 
 
 class MOD_ALLICONSInstallerScript
 {
 
-	
 	/*
          * The mimimum required joomla version for this extension. It will be read from the version attribute (install tag) in the manifest file
          */
 	private $minimum_joomla_release = '2.5.0';
 	private $release;
 	
-
 	/*
 	 * $parent is the class calling this method.
 	 * $type is the type of change (install, update or discover_install, not uninstall).
