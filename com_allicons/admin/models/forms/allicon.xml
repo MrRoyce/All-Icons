@@ -21,9 +21,9 @@
 			required="true" size="80" class="inputbox" default=""
 		/>
 		<field
-			name="icon" type="text"
+			name="icon" type="ImageList"
 			label="COM_ALLICONS_FIELD_ICON" description="COM_ALLICONS_FIELD_ICON_DESC"
-			size="20" class="inputbox" default=""
+			directory="/administrator/templates/bluestork/images/header" hide_default="1"  default="icon-48-clear.png"
 		/>
 		<field
 			name="description" 	type="text"

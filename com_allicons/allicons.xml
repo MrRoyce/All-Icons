@@ -8,7 +8,7 @@
 	<authorUrl>http://www.tdandt.com</authorUrl>
 	<copyright>Copyright 2012 - Total Design and Technology</copyright>
 	<license>This component in released under the GNU/GPL v3 or later license</license>
-	<version>1.0.0</version>
+	<version>1.1.0</version>
 	<description>Manage the administrator quick icons</description>
         
     <scriptfile>installer.php</scriptfile>
