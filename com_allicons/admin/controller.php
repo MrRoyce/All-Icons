@@ -17,7 +17,7 @@ jimport('joomla.application.component.controller');
 /**
  * General Controller of AllIcons component
  */
-class AllIconsController extends JController
+class AllIconsController extends JControllerLegacy
 {
 	/**
 	 * display task

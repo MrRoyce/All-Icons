@@ -28,7 +28,7 @@ $document->addStyleDeclaration('.icon-48-allicons {background-image: url(../medi
 jimport('joomla.application.component.controller');
  
 // Get an instance of the controller prefixed by AllIcons
-$controller = JController::getInstance('AllIcons');
+$controller = JControllerLegacy::getInstance('AllIcons');
  
 // Perform the Request task
 $controller->execute(JRequest::getCmd('task'));

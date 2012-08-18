@@ -14,7 +14,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 JHtml::_('behavior.tooltip');
 JHtml::_('behavior.formvalidation');
 ?>
-<form action="<?php echo JRoute::_('index.php?option=com_allicons&layout=edit&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="allicons-form" class="form-validate">
+<form action="<?php echo JRoute::_('index.php?option=com_allicons&layout=edit&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="adminForm" class="form-validate">
 	<div class="width-60 fltlft">
 		<fieldset class="adminform">
 			<legend><?php echo empty($this->item->id) ? JText::_('COM_ALLICONS_NEW_ICON') : JText::sprintf('COM_ALLICONS_EDITING', $this->item->id); ?></legend>

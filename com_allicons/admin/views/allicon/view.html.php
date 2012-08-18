@@ -17,7 +17,7 @@ jimport('joomla.application.component.view');
 /**
  * AllIcons View
  */
-class AllIconsViewAllIcon extends JView
+class AllIconsViewAllIcon extends JViewLegacy
 {
 	protected $state;
 	protected $script;

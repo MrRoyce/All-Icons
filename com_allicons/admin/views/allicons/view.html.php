@@ -17,7 +17,7 @@ jimport('joomla.application.component.view');
 /**
  * AllIconss View
  */
-class AllIconsViewAllIcons extends JView
+class AllIconsViewAllIcons extends JViewLegacy
 {
 
 	protected $items;
@@ -63,15 +63,15 @@ class AllIconsViewAllIcons extends JView
 		JToolBarHelper::title(JText::_('COM_ALLICONS_ALLICONS_MANAGER'), 'allicons');
 		
 		if ($canDo->get('core.create')) {
-			JToolBarHelper::addNewX('allicon.add');
+			JToolBarHelper::addNew('allicon.add');
 		}
 		
 		if ($canDo->get('core.edit')){
-			JToolBarHelper::editListX('allicon.edit');
+			JToolBarHelper::editList('allicon.edit');
 		}
 		
 		if ($canDo->get('core.delete')) {
-			JToolBarHelper::deleteListX('', 'allicons.delete');
+			JToolBarHelper::deleteList('', 'allicons.delete');
 		}
 		
 		if ($canDo->get('core.admin')) {
