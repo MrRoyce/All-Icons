@@ -10,7 +10,7 @@
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail>royce@tdandt.com</authorEmail>
 	<authorUrl>www.tdandt.com</authorUrl>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 	<description>MOD_ALLICONS_XML_DESCRIPTION</description>
 	<scriptfile>installer.php</scriptfile>
 	<files>
