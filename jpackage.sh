@@ -19,7 +19,7 @@ mv com_allicons.1.1.1.zip packages/com_allicons.1.1.1.zip;
 mv mod_allicons.1.0.1.zip packages/mod_allicons.1.0.1.zip;
 
 #make the final pkg file
-zip -r pkg_allicons.1.1.1.zip packages pkg_allicons.xml -x@exclude.lst;
+zip -r pkg_allicons.1.1.2.zip packages pkg_allicons.xml -x@exclude.lst;
 
 echo "zip all icons done";
 }

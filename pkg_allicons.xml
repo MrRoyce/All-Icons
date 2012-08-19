@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<extension type="package" version="2.5" client="administrator" >
+<name>All Icons Package</name>
+<packagename>allicons</packagename>
+<creationDate>April 29, 2012</creationDate>
+<author>Royce Harding</author>
+<authorEmail>royce@tdandt.com</authorEmail>
+<authorUrl>http://www.tdandt.com</authorUrl>
+<copyright>Copyright 2012 - Total Design and Technology</copyright>
+<license>This component in released under the GNU/GPL v3 or later license</license>
+<version>1.1.0</version>
+<url>http://www.tdandt.com/</url>
+<packager>All Icons Package Team</packager>
+<packagerurl>http://www.tdandt.com/</packagerurl>
+<description>All Icons package - Contains Component and Module</description>
+<files folder="packages">
+	<file type="component" id="com_allicons" >com_allicons.1.1.0.zip</file>
+	<file type="module" id="mod_allicons" client="administrator">mod_allicons.1.0.0.zip</file>
+</files>
+</extension>
